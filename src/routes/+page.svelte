@@ -1,31 +1,16 @@
 <script lang="ts">
-	import FileDrop from '$lib/components/FileDrop.svelte';
-	import KaraokeView from '$lib/components/KaraokeView.svelte';
-	import MidiViewer from '$lib/components/MidiViewer.svelte';
-	import { parseMidiFile } from '$lib/midi';
-	import { Track, type Midi } from '@tonejs/midi';
+	import SongList from '$lib/components/SongList.svelte';
+	import { goto } from '$app/navigation';
+	import type { Song } from '$lib/models/song';
 
-	let midi = $state<Midi | null>(null);
-	let selectedTrack = $state<Track | null>(null);
-
-	async function onFileSelected(file: File) {
-		const buf = await file.arrayBuffer();
-		const parsed = await parseMidiFile(buf);
-		midi = parsed;
-		selectedTrack = midi.tracks[0];
-	}
-
-	function onTrackSelect(trackIndex: number) {
-		// Handle track selection logic here
-		selectedTrack = midi?.tracks[trackIndex] || null;
+	function handleSongSelect(song: Song) {
+		if (song.id) {
+			goto(`/play?id=${song.id}`);
+		}
 	}
 </script>
 
-{#if midi === null}
-	<FileDrop {onFileSelected} accept=".mid,.midi" />
-{:else if selectedTrack !== null}
-	<KaraokeView track={selectedTrack} />
-{/if}
-{#if midi !== null}
-	<MidiViewer {midi} {onTrackSelect} />
-{/if}
+<main class="container">
+	<h1>Pitch-Trace</h1>
+	<SongList onSelect={handleSongSelect} />
+</main>

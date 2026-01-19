@@ -33,6 +33,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.1
         version: 6.2.4(svelte@5.46.4)(vite@7.3.1(@types/node@24.10.9))
+      '@types/audioworklet':
+        specifier: ^0.0.92
+        version: 0.0.92
       '@types/node':
         specifier: ^24
         version: 24.10.9
@@ -496,6 +499,9 @@ packages:
 
   '@tonejs/midi@2.0.28':
     resolution: {integrity: sha512-RII6YpInPsOZ5t3Si/20QKpNqB1lZ2OCFJSOzJxz38YdY/3zqDr3uaml4JuCWkdixuPqP1/TBnXzhQ39csyoVg==}
+
+  '@types/audioworklet@0.0.92':
+    resolution: {integrity: sha512-ykniYTjl1eqgkLeHLH2AAgj4rqdFZyxeVDtCopTTlcvgH7nOHNSn0KYXZPgc0Mx0TiUAwHNEzBWoJw/i8OETBg==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -1621,6 +1627,8 @@ snapshots:
     dependencies:
       array-flatten: 3.0.0
       midi-file: 1.2.4
+
+  '@types/audioworklet@0.0.92': {}
 
   '@types/chai@5.2.3':
     dependencies:
